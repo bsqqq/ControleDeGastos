@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "718717668557",
+    "firebase_url": "https://unifordevmobile.firebaseio.com",
+    "project_id": "unifordevmobile",
+    "storage_bucket": "unifordevmobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718717668557:android:e8fe5e8409554ee7842d84",
+        "android_client_info": {
+          "package_name": "com.vinicius.controledegastos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "718717668557-5fbuucns5p0h8pvdklhn73gqf80fdioq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo4RmMrmYQ1fMQP4e4PaAbzuf7fhf24CU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "718717668557-5fbuucns5p0h8pvdklhn73gqf80fdioq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718717668557:android:0c53b0078ecd38c1842d84",
+        "android_client_info": {
+          "package_name": "nati.unifor.controledegastos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "718717668557-5fbuucns5p0h8pvdklhn73gqf80fdioq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo4RmMrmYQ1fMQP4e4PaAbzuf7fhf24CU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "718717668557-5fbuucns5p0h8pvdklhn73gqf80fdioq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

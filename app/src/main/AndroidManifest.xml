@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vinicius.controledegastos">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,16 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ControleDeGastos">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.LogedInActivity"></activity>
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".registro_activity">
+        <activity android:name=".activities.registro_activity">
             <intent-filter>
-                <action android:name="android.intent.action.CALL"/>
+                <action android:name="android.intent.action.CALL" />
             </intent-filter>
         </activity>
     </application>

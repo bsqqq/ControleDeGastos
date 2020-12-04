@@ -1,14 +1,15 @@
-package com.vinicius.controledegastos
+package com.vinicius.controledegastos.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.vinicius.controledegastos.R
 
 class MainActivity : AppCompatActivity() {
     private lateinit var entrar: Button
@@ -44,9 +45,14 @@ class MainActivity : AppCompatActivity() {
                 mAuth.signInWithEmailAndPassword(LoginEmail.text.toString(), LoginPassword.text.toString())
                     .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        val user = mAuth.currentUser
+//                        val user = mAuth.currentUser
+                        val it = Intent(this, LogedInActivity::class.java)
+                        startActivity(it)
+                        finish()
                     } else {
-
+                        Toast.makeText(this,
+                            "Usuario ou senha invalidos, por favor tente novamente.",
+                            Toast.LENGTH_SHORT).show()
                     }
                 }
             }

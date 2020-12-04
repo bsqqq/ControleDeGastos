@@ -1,4 +1,4 @@
-package com.vinicius.controledegastos
+package com.vinicius.controledegastos.activities
 
 import android.os.Bundle
 import android.util.Log
@@ -6,11 +6,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.vinicius.controledegastos.R
+import model.User
 
 class registro_activity: AppCompatActivity() {
 
@@ -20,6 +22,7 @@ class registro_activity: AppCompatActivity() {
     private lateinit var RegistroSenha: EditText
     private lateinit var RegistroConfirmarSenha: EditText
     private lateinit var BotaoRegistro: Button
+    private lateinit var DB: FirebaseDatabase
     var formOk = true
     private lateinit var auth: FirebaseAuth
 
@@ -33,6 +36,7 @@ class registro_activity: AppCompatActivity() {
         RegistroConfirmarSenha = findViewById(R.id.Registro_ConfirmarSenha)
         BotaoRegistro = findViewById(R.id.Registro_Cadastrar)
         auth = Firebase.auth
+        DB = Firebase.database
 
         BotaoRegistro.setOnClickListener {
             if (RegistroNome.text.isEmpty()) {
@@ -59,13 +63,18 @@ class registro_activity: AppCompatActivity() {
                 formOk = false
             }
             if (formOk) {
-                auth.createUserWithEmailAndPassword(RegistroEmail.text.toString(), RegistroSenha.text.toString())
+                val Nome = RegistroNome.text.toString()
+                val Email = RegistroEmail.text.toString()
+                val Senha = RegistroSenha.text.toString()
+                auth.createUserWithEmailAndPassword(Email, Senha)
                     .addOnCompleteListener(this) { task ->
                         if(task.isSuccessful) {
                             Toast.makeText(registro_activity@this,
                                 "Usuario cadastrado com sucesso. Entre com sua conta!",
                                 Toast.LENGTH_SHORT)
                                 .show()
+                                val path = DB.reference.child("user")
+                                path.child(auth.currentUser?.uid!!).setValue(User(Email, Nome, Senha))
                                 finish()
                         } else {
                             Log.w("App", "signInWithEmail:failure", task.exception)

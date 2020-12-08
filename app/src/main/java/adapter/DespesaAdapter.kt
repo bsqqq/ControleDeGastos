@@ -11,7 +11,7 @@ import model.DespesaModel
 class DespesaAdapter(val DespesaList:List<DespesaModel>):RecyclerView.Adapter<DespesaAdapter.DespesaViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DespesaViewHolder {
-        val despesaView =  LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
+        val despesaView = LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
         return DespesaViewHolder(despesaView)
     }
 
@@ -19,12 +19,11 @@ class DespesaAdapter(val DespesaList:List<DespesaModel>):RecyclerView.Adapter<De
         val despesa = DespesaList[position]
         holder.despesa_nome.text = despesa.Nome_da_Despesa
         holder.despesa_data.text = despesa.Data_da_despesa
-        holder.despesa_valor.text = despesa.Valor_da_despesa.toString()
-
+        holder.despesa_valor.text = despesa.Valor_da_despesa
     }
 
     override fun getItemCount(): Int {
-       return DespesaList.size
+        return DespesaList.size
     }
 
     class DespesaViewHolder(val DespesaView: View):RecyclerView.ViewHolder(DespesaView) {

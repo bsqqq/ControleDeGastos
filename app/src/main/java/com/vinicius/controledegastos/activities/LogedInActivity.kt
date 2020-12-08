@@ -1,6 +1,7 @@
 package com.vinicius.controledegastos.activities
 
 import adapter.DespesaAdapter
+import adapter.ReceitaAdapter
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,6 +21,7 @@ import com.google.firebase.ktx.Firebase
 import com.vinicius.controledegastos.R
 import model.User
 import repository.DespesaRepository
+import repository.ReceitaRepository
 
 class LogedInActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -27,20 +29,29 @@ class LogedInActivity : AppCompatActivity() {
     private var user: User? = null
     private lateinit var titulo: TextView
     private lateinit var ListaDeDespesas: RecyclerView
+    private lateinit var ListaDeReceitas: RecyclerView
     private lateinit var CriarDespesa: Button
+    private lateinit var CriarReceita: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = Firebase.auth
         DB = Firebase.database
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loged_in)
-        titulo = findViewById(R.id.titulo)
+
+        CriarReceita = findViewById(R.id.button_CriarReceita)
+        CriarReceita.setOnClickListener {
+            val it = Intent(this, CadastroReceitaActivity::class.java)
+            startActivity(it)
+        }
+
         CriarDespesa = findViewById(R.id.CriarDespesa)
         CriarDespesa.setOnClickListener {
             val it = Intent(this, CadastroDespesaActivity::class.java)
             startActivity(it)
         }
+
+
         val despesaRepo = DespesaRepository.findAll()
         val DespesaAdapter = DespesaAdapter(despesaRepo)
         val viewManager = LinearLayoutManager(this)
@@ -50,6 +61,16 @@ class LogedInActivity : AppCompatActivity() {
             hasFixedSize()
         }
 
+        val receitaRepo = ReceitaRepository.findAll()
+        val receitaAdapter = ReceitaAdapter(receitaRepo)
+        val viewManager2 = LinearLayoutManager(this)
+        ListaDeReceitas = findViewById<RecyclerView>(R.id.recyclerview_list2).apply {
+            adapter = receitaAdapter
+            layoutManager = viewManager2
+            hasFixedSize()
+        }
+
+        titulo = findViewById(R.id.titulo)
         val userRef = DB.reference.child("user")
         userRef.orderByValue().addChildEventListener(object:ChildEventListener{
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
@@ -71,9 +92,6 @@ class LogedInActivity : AppCompatActivity() {
 
             override fun onCancelled(error: DatabaseError) {
             }
-
         })
-//        Log.i("App","UID: ${auth.currentUser?.uid!!}")
-
     }
 }

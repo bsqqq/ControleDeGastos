@@ -49,7 +49,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Cadastrese"
-        app:layout_constraintVertical_bias="0.185" />
+        app:layout_constraintVertical_bias="0.315" />
 
     <EditText
         android:id="@+id/Registro_Senha"
@@ -66,7 +66,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Registro_Email"
-        app:layout_constraintVertical_bias="0.111" />
+        app:layout_constraintVertical_bias="0.187" />
 
     <EditText
         android:id="@+id/Registro_ConfirmarSenha"
@@ -83,7 +83,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Registro_Email"
-        app:layout_constraintVertical_bias="0.491" />
+        app:layout_constraintVertical_bias="0.812" />
 
     <Button
         android:id="@+id/Registro_Cadastrar"
@@ -96,5 +96,20 @@
         app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Registro_ConfirmarSenha"
-        app:layout_constraintVertical_bias="0.053" />
+        app:layout_constraintVertical_bias="0.062" />
+
+    <EditText
+        android:id="@+id/Registro_Telefone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:hint="Telefone"
+        android:inputType="phone"
+        app:layout_constraintBottom_toTopOf="@+id/Registro_Email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Registro_Nome" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

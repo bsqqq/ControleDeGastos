@@ -2,7 +2,6 @@ package com.vinicius.controledegastos.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -11,7 +10,6 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.vinicius.controledegastos.R
 import model.DespesaModel
-import java.text.NumberFormat
 
 class CadastroDespesaActivity : AppCompatActivity() {
     private lateinit var NomeDaDespesa: EditText
@@ -60,7 +58,8 @@ class CadastroDespesaActivity : AppCompatActivity() {
                 val Descricao_Da_Despesa = DescricaoDaDespesa.text.toString()
                 val Valor_Da_Despesa = ValorDaDespesa.text.toString()
                 val path = RTDB.reference.child("Despesa")
-                    path.child("UID: ${auth.currentUser?.uid!!}").setValue(DespesaModel(Nome_Da_Despesa, Data_Da_Despesa, Descricao_Da_Despesa, Valor_Da_Despesa)).addOnCompleteListener { task ->
+                    path.child("${auth.currentUser?.uid!!}").child(Data_Da_Despesa).setValue(DespesaModel(Nome_Da_Despesa, Data_Da_Despesa, Descricao_Da_Despesa, Valor_Da_Despesa))
+                            .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(this, "Despesa criada com sucesso.", Toast.LENGTH_SHORT).show()
                             finish()

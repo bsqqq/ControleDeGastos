@@ -6,10 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".activities.LogedInActivity">
 
+    <Button
+        android:id="@+id/button_CriarReceita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Criar Receita"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView4"
+        app:layout_constraintVertical_bias="0.219" />
+
     <TextView
         android:id="@+id/titulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="Aguarde..."
         android:textSize="50sp"
         android:textStyle="bold"
@@ -28,7 +42,7 @@
         app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="0.1"></Button>
+        app:layout_constraintVertical_bias="0.032"></Button>
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -52,6 +66,28 @@
             app:layout_constraintTop_toTopOf="parent">
 
         </androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/scrollView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CriarDespesa"
+        app:layout_constraintVertical_bias="0.082">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_list2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </ScrollView>
 
 

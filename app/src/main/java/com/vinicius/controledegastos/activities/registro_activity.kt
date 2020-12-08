@@ -20,6 +20,7 @@ class registro_activity: AppCompatActivity() {
     private lateinit var RegistroEmail: EditText
     private lateinit var RegistroSenha: EditText
     private lateinit var RegistroConfirmarSenha: EditText
+    private lateinit var RegistroTelefone: EditText
     private lateinit var BotaoRegistro: Button
     private lateinit var DB: FirebaseDatabase
     var formOk = true
@@ -33,6 +34,7 @@ class registro_activity: AppCompatActivity() {
         RegistroEmail = findViewById(R.id.Registro_Email)
         RegistroSenha = findViewById(R.id.Registro_Senha)
         RegistroConfirmarSenha = findViewById(R.id.Registro_ConfirmarSenha)
+        RegistroTelefone = findViewById(R.id.Registro_Telefone)
         BotaoRegistro = findViewById(R.id.Registro_Cadastrar)
         auth = Firebase.auth
         DB = Firebase.database
@@ -61,10 +63,16 @@ class registro_activity: AppCompatActivity() {
                 RegistroConfirmarSenha.error = "As senhas não estão iguais, por favor verifique novamente."
                 formOk = false
             }
+
+            if (RegistroTelefone.text.isEmpty()) {
+                RegistroTelefone.error = "O campo Telefone está vazio, por favor preencha este campo."
+                formOk = false
+            }
             if (formOk) {
                 val Nome = RegistroNome.text.toString()
                 val Email = RegistroEmail.text.toString()
                 val Senha = RegistroSenha.text.toString()
+                val Telefone = RegistroTelefone.text.toString()
                 auth.createUserWithEmailAndPassword(Email, Senha)
                     .addOnCompleteListener(this) { task ->
                         if(task.isSuccessful) {
@@ -73,7 +81,7 @@ class registro_activity: AppCompatActivity() {
                                 Toast.LENGTH_SHORT)
                                 .show()
                                 val path = DB.reference.child("user")
-                                path.child(auth.currentUser?.uid!!).setValue(User(Email, Nome, Senha))
+                                path.child(auth.currentUser?.uid!!).setValue(User(Email, Nome, Senha, Telefone))
                                 finish()
                         } else {
                             Log.w("App", "signInWithEmail:failure", task.exception)

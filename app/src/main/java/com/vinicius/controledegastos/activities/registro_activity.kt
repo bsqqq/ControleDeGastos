@@ -17,7 +17,6 @@ import model.User
 class registro_activity: AppCompatActivity() {
 
     private lateinit var RegistroNome: EditText
-    private lateinit var RegistroUsername: EditText
     private lateinit var RegistroEmail: EditText
     private lateinit var RegistroSenha: EditText
     private lateinit var RegistroConfirmarSenha: EditText

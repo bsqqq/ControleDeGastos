@@ -1,9 +1,11 @@
 package com.vinicius.controledegastos.activities
 
 import adapter.DespesaAdapter
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +18,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.vinicius.controledegastos.R
-import model.Despesa
 import model.User
 import repository.DespesaRepository
 
@@ -26,6 +27,7 @@ class LogedInActivity : AppCompatActivity() {
     private var user: User? = null
     private lateinit var titulo: TextView
     private lateinit var ListaDeDespesas: RecyclerView
+    private lateinit var CriarDespesa: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         auth = Firebase.auth
@@ -34,7 +36,11 @@ class LogedInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loged_in)
         titulo = findViewById(R.id.titulo)
-
+        CriarDespesa = findViewById(R.id.CriarDespesa)
+        CriarDespesa.setOnClickListener {
+            val it = Intent(this, CadastroDespesaActivity::class.java)
+            startActivity(it)
+        }
         val despesaRepo = DespesaRepository.findAll()
         val DespesaAdapter = DespesaAdapter(despesaRepo)
         val viewManager = LinearLayoutManager(this)

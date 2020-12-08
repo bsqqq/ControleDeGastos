@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
 
         entrar = findViewById(R.id.Entrar)
         entrar.setOnClickListener {
-//            Log.i("Action", "Botão Entrar foi apertado")
             var formOk = true
 
             if (LoginEmail.text.isEmpty()) {

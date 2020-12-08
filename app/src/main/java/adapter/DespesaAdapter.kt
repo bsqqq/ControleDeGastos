@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.vinicius.controledegastos.R
-import model.Despesa
+import model.DespesaModel
 
-class DespesaAdapter(val DespesaList:List<Despesa>):RecyclerView.Adapter<DespesaAdapter.DespesaViewHolder>(){
+class DespesaAdapter(val DespesaList:List<DespesaModel>):RecyclerView.Adapter<DespesaAdapter.DespesaViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DespesaViewHolder {
         val despesaView =  LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)

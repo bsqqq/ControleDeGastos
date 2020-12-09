@@ -27,8 +27,8 @@ class DespesaAdapter(val DespesaList:List<DespesaModel>):RecyclerView.Adapter<De
     }
 
     class DespesaViewHolder(val DespesaView: View):RecyclerView.ViewHolder(DespesaView) {
-        val despesa_nome: TextView = DespesaView.findViewById(R.id.despesa_nome)
-        val despesa_data: TextView = DespesaView.findViewById(R.id.despesa_data)
-        val despesa_valor: TextView = DespesaView.findViewById(R.id.despesa_valor)
+        val despesa_nome: TextView = DespesaView.findViewById(R.id.nomeDoLucro)
+        val despesa_data: TextView = DespesaView.findViewById(R.id.dataDoLucro)
+        val despesa_valor: TextView = DespesaView.findViewById(R.id.valorDoLucro)
     }
 }
